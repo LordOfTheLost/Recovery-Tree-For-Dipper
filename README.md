@@ -25,7 +25,7 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/dipper" name="gitlab.com/OrangeFox/Devices/dipper" remote="github" revision="fox_9.0" />
+<project path="device/xiaomi/dipper" name="https://github.com/LordOfTheLost/dipper-fox_9.0_Q_SAR" />
 ```
 
 Finally execute these:
