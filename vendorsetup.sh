@@ -47,7 +47,7 @@ export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
 
 export OF_PATCH_AVB20=1
 
-# use system (ROM) fingerprint where available
+# Use system (ROM) fingerprint where available
 export OF_USE_SYSTEM_FINGERPRINT=1
 
 # Settings R11
@@ -86,6 +86,8 @@ export | grep "OF_" >> $FOX_BUILD_LOG_FILE
 export | grep "TW_" >> $FOX_BUILD_LOG_FILE
 export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
 fi
+
 add_lunch_combo omni_"$FDEVICE"-eng
+
 fi
 #
