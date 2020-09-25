@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# configure some default settings for the build
+Default_Settings() {
 FDEVICE="dipper"
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 export PLATFORM_VERSION="16.1.0"
@@ -74,3 +78,16 @@ export | grep "TW_" >> $FOX_BUILD_LOG_FILE
 export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
 fi
 fi
+}
+
+# build the project
+Build() {
+Default_Settings
+# compile it
+. build/envsetup.sh
+lunch omni_dipper-eng && mka recoveryimage
+}
+
+# --- main --- #
+Build
+#
