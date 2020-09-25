@@ -79,7 +79,7 @@ Build() {
 Default_Settings
 # compile it
 . build/envsetup.sh
-lunch omni_dipper-eng && mka recoveryimage
+lunch omni_$FDEVICE-eng && mka recoveryimage
 }
 
 # --- main --- #
