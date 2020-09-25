@@ -1,7 +1,6 @@
 # configure some default settings for the build
 Default_Settings() {
 FDEVICE="dipper"
-if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 export PLATFORM_VERSION="16.1.0"
 export PLATFORM_SECURITY_PATCH="2099-12-31"
 export TW_DEFAULT_LANGUAGE="en"
@@ -68,14 +67,11 @@ export OF_FLASHLIGHT_ENABLE=1
 # Fox Version
 export FOX_VERSION=R11.0-Build6
 
-# Let's see what are our build VARs
-if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
-export | grep "FOX" >> $FOX_BUILD_LOG_FILE
-export | grep "OF_" >> $FOX_BUILD_LOG_FILE
-export | grep "TW_" >> $FOX_BUILD_LOG_FILE
-export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
-fi
-fi
+# Other Compiler & Vars
+export ALLOW_MISSING_DEPENDENCIES=true
+export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+export LC_ALL="C"
+export OF_MAINTAINER="Lord Of The Lost"
 }
 
 # build the project
@@ -83,10 +79,6 @@ Build() {
 Default_Settings
 # compile it
 . build/envsetup.sh
-export ALLOW_MISSING_DEPENDENCIES=true
-export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-export LC_ALL="C"
-export OF_MAINTAINER="Lord Of The Lost"
 lunch omni_dipper-eng && mka recoveryimage
 }
 
