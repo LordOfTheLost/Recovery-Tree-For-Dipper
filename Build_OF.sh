@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # configure some default settings for the build
 Default_Settings() {
 FDEVICE="dipper"
@@ -85,6 +83,10 @@ Build() {
 Default_Settings
 # compile it
 . build/envsetup.sh
+export ALLOW_MISSING_DEPENDENCIES=true
+export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+export LC_ALL="C"
+export OF_MAINTAINER="Lord Of The Lost"
 lunch omni_dipper-eng && mka recoveryimage
 }
 
