@@ -37,7 +37,6 @@ export FOX_R11=1
 #export FOX_ADVANCED_SECURITY=
 export OF_USE_TWRP_SAR_DETECT=1
 export OF_QUICK_BACKUP_LIST="/boot;/data;/system;/vendor;"
-export FOX_VERSION=R11
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 export FOX_DELETE_AROMAFM=1
 #export OF_VANILLA_BUILD=
