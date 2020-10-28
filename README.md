@@ -1,1 +1,0 @@
-Otval Get Started
