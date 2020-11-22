@@ -36,7 +36,7 @@ export OF_USE_SYSTEM_FINGERPRINT=1
 export FOX_R11=1
 #export FOX_ADVANCED_SECURITY=
 export OF_USE_TWRP_SAR_DETECT=1
-export OF_QUICK_BACKUP_LIST="/boot;/data;/system;/vendor;"
+export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 export FOX_DELETE_AROMAFM=1
 #export OF_VANILLA_BUILD=
@@ -65,9 +65,9 @@ export OF_FLASHLIGHT_ENABLE=1
 #export OF_LEGACY_SHAR512=1
 
 # Fox Version
-export FOX_VERSION=R11.0-Build6
+export FOX_VERSION=R11.0-Build8
 
-# Other Compiler & Vars
+# Other Compiler Vars
 export ALLOW_MISSING_DEPENDENCIES=true
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export LC_ALL="C"
