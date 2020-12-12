@@ -65,7 +65,7 @@ export OF_FLASHLIGHT_ENABLE=1
 #export OF_LEGACY_SHAR512=1
 
 # Fox Version
-export FOX_VERSION=R11.0-Build8
+export FOX_VERSION=R11.0-Build9
 
 # Other Compiler Vars
 export ALLOW_MISSING_DEPENDENCIES=true
