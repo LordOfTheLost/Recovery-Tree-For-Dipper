@@ -39,6 +39,7 @@ export OF_USE_TWRP_SAR_DETECT=1
 export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 export FOX_DELETE_AROMAFM=1
+export FOX_DELETE_INITD_ADDON=1
 #export OF_VANILLA_BUILD=
 
 # UI
@@ -65,7 +66,7 @@ export OF_FLASHLIGHT_ENABLE=1
 #export OF_LEGACY_SHAR512=1
 
 # Fox Version
-export FOX_VERSION=R11.0-Build9
+export FOX_VERSION=R11.0-Build10  
 
 # Other Compiler Vars
 export ALLOW_MISSING_DEPENDENCIES=true
