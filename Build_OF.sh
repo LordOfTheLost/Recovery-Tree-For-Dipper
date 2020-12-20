@@ -1,7 +1,8 @@
 # configure some default settings for the build
-VOF="$( date +"%d.%m" ).20-(10)"
-Default_Settings() {
 FDEVICE="dipper"
+VOF="$( date +"%d.%m" ).20-(10)"
+tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
+Default_Settings() {
 # Other Settings
 export PLATFORM_VERSION="16.1.0"
 export PLATFORM_SECURITY_PATCH="2099-12-31"
