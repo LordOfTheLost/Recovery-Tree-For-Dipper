@@ -1,6 +1,6 @@
 # configure some default settings for the build
 FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(11)"
+VOF="$( date +"%d.%m" ).21-(12)"
 tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
 Default_Settings() {
 # Other Settings
@@ -21,6 +21,7 @@ export OF_USE_NEW_MAGISKBOOT=1
 export OF_CHECK_OVERWRITE_ATTEMPTS=1
 export FOX_RESET_SETTINGS=1
 export OF_FLASHLIGHT_ENABLE=1
+export FOX_DISABLE_APP_MANAGER=0
 #export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
 
 #BACKUP
