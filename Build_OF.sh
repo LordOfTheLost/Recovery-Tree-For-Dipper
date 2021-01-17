@@ -1,7 +1,10 @@
-# configure some default settings for the build
+# Configure some default settings for the build
 FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(12)"
+VOF="$( date +"%d.%m" ).21-(13)"
+if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then
 tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
+fi
+
 Default_Settings() {
 # Other Settings
 export PLATFORM_VERSION="16.1.0"
@@ -23,8 +26,9 @@ export FOX_RESET_SETTINGS=1
 export OF_FLASHLIGHT_ENABLE=1
 export FOX_DISABLE_APP_MANAGER=0
 #export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+export FOX_USE_GREP_BINARY=0
 
-#BACKUP
+# BACKUP
 export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
 export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 
