@@ -1,6 +1,6 @@
 # Configure some default settings for the build
 FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(13)"
+VOF="$( date +"%d.%m" ).21-(14)"
 if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then
 tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
 fi
@@ -34,7 +34,7 @@ export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 
 # Files
 export FOX_REPLACE_BUSYBOX_PS=1
-export FOX_REMOVE_AAPT=1
+#export FOX_REMOVE_AAPT=1
 export FOX_USE_BASH_SHELL=1
 export FOX_ASH_IS_BASH=1
 #export FOX_USE_NANO_EDITOR=1
