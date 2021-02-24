@@ -1,8 +1,17 @@
 # Configure some default settings for the build
 FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(14)"
+VOF="$( date +"%d.%m" ).21-(15)"
+
 if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then
 tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
+fi
+
+if [ -f device/xiaomi/$FDEVICE/maintainer.png ]; then
+cp -f device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f device/xiaomi/$FDEVICE/maintainer.png
+fi
+
+if [ -f device/xiaomi/$FDEVICE/busybox ]; then
+cp -f device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f device/xiaomi/$FDEVICE/busybox
 fi
 
 Default_Settings() {
