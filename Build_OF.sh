@@ -2,17 +2,10 @@
 FDEVICE="dipper"
 VOF="$( date +"%d.%m" ).21-(15)"
 
-if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then
-tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz
-fi
-
-if [ -f device/xiaomi/$FDEVICE/maintainer.png ]; then
-cp -f device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f device/xiaomi/$FDEVICE/maintainer.png
-fi
-
-if [ -f device/xiaomi/$FDEVICE/busybox ]; then
-cp -f device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f device/xiaomi/$FDEVICE/busybox
-fi
+if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
+if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
+cd scripts/OrangeFox
+if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz; fi
 
 Default_Settings() {
 # Other Settings
@@ -93,7 +86,7 @@ export LC_ALL="C"
 
 # Fox Version
 export FOX_VERSION=R11.0-$VOF
-export FOX_BUILD_TYPE=Weekly
+export FOX_BUILD_TYPE=Monthly
 
 # MAINTAINER
 export OF_MAINTAINER="Lord Of The Lost"
