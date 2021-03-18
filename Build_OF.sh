@@ -1,6 +1,6 @@
 # Configure some default settings for the build
-FDEVICE="vince"
-VOF="$( date +"%d.%m" ).21-(1)"
+FDEVICE="dipper"
+VOF="$( date +"%d.%m" ).21-(16)"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
@@ -32,7 +32,7 @@ export FOX_USE_GREP_BINARY=0
 
 # BACKUP
 export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
-export OF_QUICK_BACKUP_LIST="/boot;/data;/system;/vendor;"
+export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 
 # Files
 export FOX_REPLACE_BUSYBOX_PS=1
