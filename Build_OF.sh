@@ -1,6 +1,6 @@
 # Configure some default settings for the build
 FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(15)"
+VOF="$( date +"%d.%m" ).21-(16)"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
@@ -67,7 +67,7 @@ export OF_DISABLE_FORCED_ENCRYPTION=1
 export OF_CLOCK_POS=0
 export OF_USE_LOCKSCREEN_BUTTON=1
 export OF_SCREEN_H=2248
-export OF_STATUS_H=80
+export OF_STATUS_H=1080
 export OF_STATUS_INDENT_LEFT=48
 export OF_STATUS_INDENT_RIGHT=48
 #export OF_NO_SPLASH_CHANGE=1
