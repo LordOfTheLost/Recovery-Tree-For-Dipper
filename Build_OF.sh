@@ -6,13 +6,13 @@ if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f sc
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/page; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip ]; then cp -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip scripts/OrangeFox/vendor/recovery/FoxFiles; rm -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip; fi
-cd scripts/OrangeFox
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip; fi
 if [ -d scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM ]; then rm -rf scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/Magisk.zip ]; then cp -f scripts/OrangeFox/vendor/recovery/FoxFiles/Magisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; fi
+cd scripts/OrangeFox
 if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz; fi
 
 Default_Settings() {
