@@ -10,7 +10,7 @@ if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip ]; then 
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip; fi
 if [ -d scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM ]; then rm -rf scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM; fi
-if [ -f device/xiaomi/$FDEVICE/unrootmagisk.zip ]; then cp -f device/xiaomi/$FDEVICE/unrootmagisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; rm -f device/xiaomi/$FDEVICE/unrootmagisk.zip; fi
+if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/unrootmagisk.zip ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/unrootmagisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; rm -f device/xiaomi/$FDEVICE/unrootmagisk.zip; fi
 cd scripts/OrangeFox; if [ -f device/xiaomi/$FDEVICE/$OFKP ]; then tar -xf device/xiaomi/$FDEVICE/$OFKP -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/$OFKP; fi
 
 Default_Settings() {
