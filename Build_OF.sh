@@ -85,7 +85,7 @@ export LC_ALL="C"
 #export OF_LEGACY_SHAR512=1
 
 # Fox Version
-export FOX_VERSION=R11.0-$VOF
+export FOX_VERSION=R11.1-$VOF
 export FOX_BUILD_TYPE=Monthly
 
 # MAINTAINER
