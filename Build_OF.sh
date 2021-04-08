@@ -1,6 +1,5 @@
 # Configure some default settings for the build
-FDEVICE="dipper"
-VOF="$( date +"%d.%m" ).21-(17)"
+MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(17)"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
@@ -44,6 +43,8 @@ export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
 export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 
 # Files
+export FOX_DELETE_AROMAFM=1
+export FOX_DELETE_INITD_ADDON=1
 export FOX_REPLACE_BUSYBOX_PS=1
 #export FOX_REMOVE_AAPT=1
 export FOX_USE_BASH_SHELL=1
@@ -58,8 +59,6 @@ export FOX_ASH_IS_BASH=1
 export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
 export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
-export FOX_DELETE_AROMAFM=1
-export FOX_DELETE_INITD_ADDON=1
 
 # Encryption
 export OF_PATCH_AVB20=1
@@ -95,7 +94,7 @@ export LC_ALL="C"
 #export FOX_JAVA8_PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/java
 
 # Fox Version
-export FOX_VERSION=R11.1-$VOF
+export FOX_VERSION=R11.1-$VOF$MMVOF
 export FOX_BUILD_TYPE=Monthly
 
 # MAINTAINER
