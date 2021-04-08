@@ -1,5 +1,5 @@
 # Configure some default settings for the build
-MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(17)"
+MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(17)"; OFKP="prebuilt/Image.tar.xz"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
@@ -10,9 +10,8 @@ if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip ]; then 
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip; fi
 if [ -d scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM ]; then rm -rf scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM; fi
-if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/Magisk.zip ]; then cp -f scripts/OrangeFox/vendor/recovery/FoxFiles/Magisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; fi
-cd scripts/OrangeFox
-if [ -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz ]; then tar -xf device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/prebuilt/Image.tar.xz; fi
+if [ -f device/xiaomi/$FDEVICE/unrootmagisk.zip ]; then cp -f device/xiaomi/$FDEVICE/unrootmagisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; rm -f device/xiaomi/$FDEVICE/unrootmagisk.zip; fi
+cd scripts/OrangeFox; if [ -f device/xiaomi/$FDEVICE/$OFKP ]; then tar -xf device/xiaomi/$FDEVICE/$OFKP -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/$OFKP; fi
 
 Default_Settings() {
 # Other Settings
