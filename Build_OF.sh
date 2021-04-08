@@ -4,6 +4,7 @@ VOF="$( date +"%d.%m" ).21-(17)"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
+if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/page; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip ]; then cp -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip scripts/OrangeFox/vendor/recovery/FoxFiles; rm -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip; fi
 cd scripts/OrangeFox
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip; fi
