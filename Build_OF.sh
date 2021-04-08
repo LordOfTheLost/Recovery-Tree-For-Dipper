@@ -92,6 +92,7 @@ export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export LC_ALL="C"
 #export OF_DISABLE_KEYMASTER2=1
 #export OF_LEGACY_SHAR512=1
+#export FOX_JAVA8_PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/java
 
 # Fox Version
 export FOX_VERSION=R11.1-$VOF
