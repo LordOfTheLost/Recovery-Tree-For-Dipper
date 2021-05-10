@@ -23,25 +23,25 @@ export TW_DEFAULT_LANGUAGE="en"
 export OF_USE_TWRP_SAR_DETECT=0; # Blyad Prosto
 export OF_SUPPORT_PRE_FLASH_SCRIPT=1; # Support running a script before flashing zips (other than ROMs). The script must be called /sbin/fox_pre_flash - and you need to copy it there yourself
 #export OF_VANILLA_BUILD=1
-export OF_CLASSIC_LEDS_FUNCTION=1
-export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1; #If this is set, this script will also automatically set OF_USE_MAGISKBOOT to 1
-#export OF_USE_MAGISKBOOT=1; #If OF_USE_MAGISKBOOT_FOR_ALL_PATCHES is on, then you don't need to turn it on 
+export OF_CLASSIC_LEDS_FUNCTION=0; # Use the old R9.x Leds function
+export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1; # If this is set, this script will also automatically set OF_USE_MAGISKBOOT to 1
+#export OF_USE_MAGISKBOOT=1; # If OF_USE_MAGISKBOOT_FOR_ALL_PATCHES is on, then you don't need to turn it on 
 export OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI=1 # if you disable this, then enable the next line
 #export OF_NO_MIUI_PATCH_WARNING=1
 #export OF_USE_NEW_MAGISKBOOT=1; # OBSOLETE!
-export OF_CHECK_OVERWRITE_ATTEMPTS=1
+export OF_CHECK_OVERWRITE_ATTEMPTS=1; # Check for attempts by a ROM's installer to overwrite OrangeFox with another recovery
 export FOX_RESET_SETTINGS=1
 export OF_FLASHLIGHT_ENABLE=1
 export FOX_DISABLE_APP_MANAGER=0
-#export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
-export FOX_USE_GREP_BINARY=0
+#export OF_NO_TREBLE_COMPATIBILITY_CHECK=1; # Disable checking for compatibility.zip in ROMs
 export OF_RUN_POST_FORMAT_PROCESS=1
 
 # BACKUP
-export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
+export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=0
 export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 
 # Files
+export FOX_USE_GREP_BINARY=0
 export FOX_DELETE_AROMAFM=1
 export FOX_DELETE_INITD_ADDON=1
 export FOX_REPLACE_BUSYBOX_PS=1
@@ -55,13 +55,13 @@ export FOX_ASH_IS_BASH=1
 export FOX_USE_XZ_UTILS=1
 
 # OTA for custom ROMs
-export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
+export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1; #This setting is incompatible with OF_DISABLE_MIUI_SPECIFIC_FEATURES/OF_TWRP_COMPATIBILITY_MODE/OF_VANILLA_BUILD
 export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 
 # Encryption
-export OF_PATCH_AVB20=1
-export OF_OTA_RES_DECRYPT=1
+export OF_PATCH_AVB20=1; # Patch AVB 2.0 so that OrangeFox is not replaced by stock recovery
+export OF_OTA_RES_DECRYPT=1; # Decrypt internal storage (instead bailing out with an error) during MIUI OTA restore
 export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 export OF_KEEP_DM_VERITY=1
 export OF_DISABLE_FORCED_ENCRYPTION=1
