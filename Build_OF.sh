@@ -1,5 +1,5 @@
 # Configure some default settings for the build
-MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(17)"; OFKP="prebuilt/Image.tar.xz"
+MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(18)"; OFKP="prebuilt/Image.tar.xz"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
@@ -24,11 +24,11 @@ export OF_USE_TWRP_SAR_DETECT=0
 export OF_SUPPORT_PRE_FLASH_SCRIPT=0
 #export OF_VANILLA_BUILD=1
 export OF_CLASSIC_LEDS_FUNCTION=1
-export OF_USE_MAGISKBOOT=1
-export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
+export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1; #If this is set, this script will also automatically set OF_USE_MAGISKBOOT to 1
+#export OF_USE_MAGISKBOOT=1; #If OF_USE_MAGISKBOOT_FOR_ALL_PATCHES is on, then you don't need to turn it on 
 export OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI=1 # if you disable this, then enable the next line
 #export OF_NO_MIUI_PATCH_WARNING=1
-export OF_USE_NEW_MAGISKBOOT=1
+#export OF_USE_NEW_MAGISKBOOT=1; # OBSOLETE!
 export OF_CHECK_OVERWRITE_ATTEMPTS=1
 export FOX_RESET_SETTINGS=1
 export OF_FLASHLIGHT_ENABLE=1
@@ -45,14 +45,14 @@ export OF_QUICK_BACKUP_LIST="/boot;/data;/system_root;/vendor;"
 export FOX_DELETE_AROMAFM=1
 export FOX_DELETE_INITD_ADDON=1
 export FOX_REPLACE_BUSYBOX_PS=1
-#export FOX_REMOVE_AAPT=1
+#export FOX_REMOVE_AAPT=1; # Used for FOX_DISABLE_APP MANAGER if on enable
 export FOX_USE_BASH_SHELL=1
 export FOX_ASH_IS_BASH=1
 #export FOX_USE_NANO_EDITOR=1
 #export FOX_USE_TAR_BINARY=1
-#export FOX_USE_ZIP_BINARY=1
+#export FOX_USE_ZIP_BINARY=1; # OBSOLETE!
 #export FOX_DELETE_MAGISK_ADDON=1
-#export FOX_USE_XZ_UTILS=1
+export FOX_USE_XZ_UTILS=1
 
 # OTA for custom ROMs
 export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
