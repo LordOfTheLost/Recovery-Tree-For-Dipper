@@ -18,10 +18,10 @@ Default_Settings() {
 export PLATFORM_VERSION="16.1.0"
 export PLATFORM_SECURITY_PATCH="2099-12-31"
 export TW_DEFAULT_LANGUAGE="en"
-#export FOX_R11=1
-#export FOX_ADVANCED_SECURITY=0
-export OF_USE_TWRP_SAR_DETECT=0
-export OF_SUPPORT_PRE_FLASH_SCRIPT=0
+#export FOX_R11=1; #DEPCRECATED!
+#export FOX_ADVANCED_SECURITY=0; # This forces ADB and MTP to be disabled until after you enter the recovery (ie, until after all decryption/recovery passwords are successfully entered)
+export OF_USE_TWRP_SAR_DETECT=0; # Blyad Prosto
+export OF_SUPPORT_PRE_FLASH_SCRIPT=1; # Support running a script before flashing zips (other than ROMs). The script must be called /sbin/fox_pre_flash - and you need to copy it there yourself
 #export OF_VANILLA_BUILD=1
 export OF_CLASSIC_LEDS_FUNCTION=1
 export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1; #If this is set, this script will also automatically set OF_USE_MAGISKBOOT to 1
@@ -106,6 +106,7 @@ Default_Settings
 # compile it
 . build/envsetup.sh
 add_lunch_combo omni_$FDEVICE-eng
+add_lunch_combo omni_$FDEVICE-user
 add_lunch_combo omni_$FDEVICE-userdebug
 lunch omni_$FDEVICE-eng && mka recoveryimage
 }
