@@ -1,19 +1,30 @@
 # Configure some default settings for the build
-MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(18)"; OFKP="prebuilt/Image.tar.xz"
+MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(18)"; OFKP="prebuilt/Image.tar.xz"; FONTXML="scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/themes/font.xml"; ADVANCEDXML="scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/pages/advanced.xml"; INSTALLER="scripts/OrangeFox/vendor/recovery/installer/META-INF/com/google/android/update-binary"
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
+
+Patch_OF_Settings() {
+sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/<placement x=\"0\" y=\"0\"\/>/g" $ADVANCEDXML
+sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row5_2_y%\"\/>/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/g" $ADVANCEDXML
+sed -i "s/<placement x=\"0\" y=\"%row5_3_y%\" w=\"%screen_w%\" h=\"%bl_h4%\"\/>/<placement x=\"0\" y=\"%row3_2a_y%\" w=\"%screen_w%\" h=\"%bl_h3%\"\/>/g" $ADVANCEDXML
+sed -i "s/<variable name=\"theme_font\" value=\"Roboto\"\/>/<variable name=\"theme_font\" value=\"GoogleSans\"\/>/g" $FONTXML
+sed -i "s/<condition var1=\"of_hide_app_hint\" op=\"!=\" var2=\"1\"\/>/<condition var1=\"of_hide_app_hint\" op=\"!=\" var2=\"0\"\/>/g" $ADVANCEDXML
+# sed -i "s/ui_print \" >> Rebooting to Recovery in 5 seconds ...\"/ui_print \" - Check FOX_DISABLE_APP_MANAGER\"; \/sdcard\/FoxFiles\/runatboot.sh; rm -f \/sdcard\/FoxFiles\/runatboot.sh; ui_print \" >> Rebooting to Recovery in 5 seconds ...\" /g" $INSTALLER
+}
+
+Default_Settings() {
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/maintainer.png; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox scripts/OrangeFox/vendor/recovery/Files; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/busybox; fi
-if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml scripts/OrangeFox/bootable/recovery/gui/theme/portrait_hdpi/page; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/advanced.xml; fi
-if [ -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip ]; then cp -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip scripts/OrangeFox/vendor/recovery/FoxFiles; rm -f scripts/OrangeFox/vendor/recovery/FoxExtras/FFiles/OF_backup_settings.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/GoogleSans.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/SubstratumRescue_Legacy.zip; fi
 if [ -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip ]; then rm -f scripts/OrangeFox/vendor/recovery/FoxFiles/OF_initd.zip; fi
 if [ -d scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM ]; then rm -rf scripts/OrangeFox/vendor/recovery/FoxFiles/AromaFM; fi
 if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/unrootmagisk.zip ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/unrootmagisk.zip scripts/OrangeFox/vendor/recovery/FoxFiles/unrootmagisk.zip; rm -f scripts/OrangeFox/device/xiaomi/$FDEVICE/unrootmagisk.zip; fi
+if [ -f scripts/OrangeFox/device/xiaomi/$FDEVICE/recovery/root/sbin/runatboot.sh ]; then cp -f scripts/OrangeFox/device/xiaomi/$FDEVICE/recovery/root/sbin/runatboot.sh scripts/OrangeFox/vendor/recovery/FoxFiles; fi
 cd scripts/OrangeFox; if [ -f device/xiaomi/$FDEVICE/$OFKP ]; then tar -xf device/xiaomi/$FDEVICE/$OFKP -C device/xiaomi/$FDEVICE/prebuilt; rm -f device/xiaomi/$FDEVICE/$OFKP; fi
+}
 
-Default_Settings() {
+Default_Fox_Vars() {
 # Other Settings
 export PLATFORM_VERSION="16.1.0"
 export PLATFORM_SECURITY_PATCH="2099-12-31"
@@ -102,7 +113,9 @@ export OF_MAINTAINER="Lord Of The Lost"
 
 # build the project
 Build() {
+Patch_OF_Settings
 Default_Settings
+Default_Fox_Vars
 # compile it
 . build/envsetup.sh
 add_lunch_combo omni_$FDEVICE-eng
