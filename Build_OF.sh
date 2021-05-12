@@ -3,11 +3,15 @@ MMVOF="$1"; FDEVICE="dipper"; VOF="$( date +"%d.%m" ).21-(18)"; OFKP="prebuilt/I
 sudo chmod -R 777 scripts/OrangeFox/vendor/recovery
 
 Patch_OF_Settings() {
-sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/<placement x=\"0\" y=\"0\"\/>/g" $ADVANCEDXML
-sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row5_2_y%\"\/>/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/g" $ADVANCEDXML
+if [ -f scripts/OrangeFox/vendor/recovery/ADVANCEDXML ]; then touch scripts/OrangeFox/vendor/recovery/ADVANCEDXML; else sed -i "320,356 d" $ADVANCEDXML; touch scripts/OrangeFox/vendor/recovery/ADVANCEDXML; fi
+# sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/<placement x=\"0\" y=\"0\"\/>/g" $ADVANCEDXML
+# sed -i "s/<placement x=\"%col1_x_caption%\" y=\"%row5_2_y%\"\/>/<placement x=\"%col1_x_caption%\" y=\"%row3_1a_y%\"\/>/g" $ADVANCEDXML
 sed -i "s/<placement x=\"0\" y=\"%row5_3_y%\" w=\"%screen_w%\" h=\"%bl_h4%\"\/>/<placement x=\"0\" y=\"%row3_2a_y%\" w=\"%screen_w%\" h=\"%bl_h3%\"\/>/g" $ADVANCEDXML
-sed -i "s/<variable name=\"theme_font\" value=\"Roboto\"\/>/<variable name=\"theme_font\" value=\"GoogleSans\"\/>/g" $FONTXML
+# sed -i "s/Roboto/GoogleSans/g" $FONTXML
+# sed -i "s/value=\"n\"/value=\"s\"/g" $FONTXML
 sed -i "s/<condition var1=\"of_hide_app_hint\" op=\"!=\" var2=\"1\"\/>/<condition var1=\"of_hide_app_hint\" op=\"!=\" var2=\"0\"\/>/g" $ADVANCEDXML
+sed -i "/name=\"{@more}\"/I,+4 d" $ADVANCEDXML; sed -i "/name=\"{@hide}\"/I,+5 d" $ADVANCEDXML
+sed -i "/<condition var1=\"utils_show\" var2=\"1\"\/>/d" $ADVANCEDXML
 # sed -i "s/ui_print \" >> Rebooting to Recovery in 5 seconds ...\"/ui_print \" - Check FOX_DISABLE_APP_MANAGER\"; \/sdcard\/FoxFiles\/runatboot.sh; rm -f \/sdcard\/FoxFiles\/runatboot.sh; ui_print \" >> Rebooting to Recovery in 5 seconds ...\" /g" $INSTALLER
 }
 
