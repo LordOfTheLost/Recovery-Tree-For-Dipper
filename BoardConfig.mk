@@ -48,8 +48,9 @@ BOARD_NEEDS_LZMA_MINIGZIP := true
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xA84000 androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 androidboot.selinux=permissive androidboot.usbconfigfs=trueBOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET     := 0x01000000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_SECOND_OFFSET := 0x00f00000
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 BOARD_KERNEL_IMAGE_NAME := kernel
 NEED_KERNEL_MODULE_SYSTEM := true
@@ -100,7 +101,7 @@ TW_DEFAULT_BRIGHTNESS := 420
 TW_MAX_BRIGHTNESS := 1023
 # TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := false
-# TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
 # AB_OTA_UPDATER := false
@@ -111,8 +112,8 @@ TW_USE_TOOLBOX := true
 # File Systems
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-# TW_INCLUDE_FUSE_NTFS := true
-# TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_FUSE_NTFS := true
+TW_INCLUDE_FUSE_EXFAT := true
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
