@@ -2,24 +2,18 @@
 # The filesystem that contains the filesystem e2fsck binary (typically /system) cannot
 # specify 'check', and must come before any filesystems that do specify 'check'
 
+# NOTE: /system, /system_ext and /vendor partitions are early-mounted and the fstab entry is specified in device tree (duplicated below for recovery image purposes only):
+#       /proc/device-tree/firmware/android/fstab/system
+#       /proc/device-tree/firmware/android/fstab/system_ext
+#       /proc/device-tree/firmware/android/fstab/vendor
+
 #<src>                                      <mnt_point>             <type>  <mnt_flags and options>                                                                           <fs_mgr_flags>
-/data          ext4   /dev/block/bootdevice/by-name/userdata         flags=encryptable=footer;length=-16384;fileencryption=ice:aes-256-cts                                                 latemount,wait,check,fileencryption=ice,quota,encryptable=footer
-/cache         ext4   /dev/block/bootdevice/by-name/cache            flags=display="Cache"                                                               wait
+/dev/block/bootdevice/by-name/cache          /cache                  ext4    noatime,nosuid,nodev,barrier=1                                                                    wait
 /dev/block/bootdevice/by-name/misc           /misc                   emmc    defaults                                                                                          defaults
-/boot          emmc   /dev/block/bootdevice/by-name/boot             flags=display="Boot Image";backup=1;flashimg=1                                                                                      recoveryonly
-/recovery      emmc   /dev/block/bootdevice/by-name/recovery         flags=display="Recovery Image";backup=1;flashimg=1                                                                                     recoveryonly
-/system_root   ext4   /dev/block/bootdevice/by-name/system           flags=display="System";backup=1;wipeingui                   wait,recoveryonly
-/system_image  emmc   /dev/block/bootdevice/by-name/system           flags=display="System Image";backup=1;flashimg=1                   wait,recoveryonly
-/vendor        ext4   /dev/block/bootdevice/by-name/vendor           flags=display="Vendor";backup=1;wipeingui                      wait,recoveryonly
-/vendor_image  emmc   /dev/block/bootdevice/by-name/vendor           flags=display="Vendor Image";backup=1;flashimg=1                      wait,recoveryonly
-/persist_image emmc   /dev/block/bootdevice/by-name/persist          flags=display="Persist Image";backup=1;flashimg=1                                                                   wait
-/storage       ext4   /data/media/0                                  flags=display="Internal Storage";usermrf;backup=0;fsflags="bind";removable
-/keymaster     emmc   /dev/block/bootdevice/by-name/keymaster_a      flags=display="Keymaster Image";backup=1;flashimg=1
-/cust_image    emmc   /dev/block/bootdevice/by-name/cust             flags=display="Cust Image";backup=0;flashimg=1                                                                   wait
-/vbmeta        emmc   /dev/block/bootdevice/by-name/vbmeta           flags=display="VBMeta Image";backup=1;flashimg=1                                                                   wait
+/dev/block/bootdevice/by-name/boot           /boot                   emmc    defaults                                                                                          recoveryonly
+/dev/block/bootdevice/by-name/recovery       /recovery               emmc    defaults                                                                                          recoveryonly
+/dev/block/bootdevice/by-name/system         /system                 ext4    ro,barrier=1                                                                                      wait,recoveryonly
+/dev/block/bootdevice/by-name/vendor         /vendor                 ext4    ro,barrier=1                                                                                      wait,recoveryonly
+/dev/block/bootdevice/by-name/userdata       /data                   ext4    noatime,nosuid,nodev,barrier=0,noauto_da_alloc                                                    latemount,wait,check,fileencryption=ice,quota
 
-# Splash/Logo
-/logo          emmc   /dev/block/bootdevice/by-name/logo             flags=display="Logo Image";backup=1;flashimg=1
-
-# Removable storage
-/usb_otg       auto   /dev/block/sdg1         /dev/block/sdg         flags=display="USB-Storage";storage;wipeingui;removable
+/usb_otg       auto   /dev/block/sdg1        /dev/block/sdg         flags=display="USB-Storage";storage;wipeingui;removable
