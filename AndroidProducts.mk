@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_dipper.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_dipper.mk
