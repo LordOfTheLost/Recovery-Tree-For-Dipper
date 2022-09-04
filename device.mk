@@ -14,7 +14,6 @@
 # limitations under the License.
 #
 
-# QCOM Decryption
 PRODUCT_PACKAGES += \
 	qcom_decrypt \
 	qcom_decrypt_fbe
@@ -49,7 +48,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES := \
 PRODUCT_COPY_FILES += \
 	$(OUT_DIR)/target/product/dipper/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
 
-# FDE [Not Supported]
 TARGET_HW_DISK_ENCRYPTION := true
 ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
 $(warning FDE doesn't work with the 11.0 manifest. You will not be able to decrypt MIUI ROMs)
