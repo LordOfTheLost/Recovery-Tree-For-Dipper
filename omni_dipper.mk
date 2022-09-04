@@ -17,16 +17,15 @@
 # Release name
 PRODUCT_RELEASE_NAME := dipper
 
-$(call inherit-product, build/target/product/embedded.mk)
-
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# Inherit from dipper device
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, device/$(PRODUCT_RELEASE_NAME)/device.mk)
+# $(call inherit-product, build/make/target/product/aosp_base.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_dipper
+PRODUCT_NAME := twrp_dipper
 PRODUCT_DEVICE := dipper
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 8
