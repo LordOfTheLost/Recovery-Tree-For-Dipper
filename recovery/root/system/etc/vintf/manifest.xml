@@ -1,8 +1,9 @@
 <!--
     Input:
         manifest.xml
+        framework_manifest.xml
 -->
-<manifest version="1.0" type="framework">
+<manifest version="4.0" type="framework">
     <hal format="hidl">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
@@ -13,7 +14,7 @@
         </interface>
         <fqname>@1.0::IDisplayService/default</fqname>
     </hal>
-    <hal format="hidl">
+    <hal format="hidl" max-level="5">
         <name>android.frameworks.schedulerservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -85,14 +86,23 @@
     </hal>
     <hal format="native">
         <name>netutils-wrapper</name>
-        <transport></transport>
         <version>1.0</version>
     </hal>
-    <vendor-ndk>
-        <version>29</version>
-    </vendor-ndk>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.wifi.keystore</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IKeystoreExt</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IKeystoreExt/default</fqname>
+    </hal>
     <system-sdk>
         <version>28</version>
         <version>29</version>
+        <version>30</version>
+        <version>31</version>
+        <version>32</version>
     </system-sdk>
 </manifest>

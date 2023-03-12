@@ -1,5 +1,7 @@
 # Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
 #
+# Copyright (C) 2019-2022 The OrangeFox Recovery Project
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #     * Redistributions of source code must retain the above copyright
@@ -27,11 +29,22 @@
 
 import /init.recovery.qcom_decrypt.rc
 
+service fix_decryption /system/bin/fix_decryption.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-service ashmemd /system/bin/ashmemd
-    class core
-    user nobody
-    group nobody
+on boot
+    start health-hal-2-1
+    setprop sys.usb.config adb
+
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    chmod 0777 /system/bin/fix_decryption.sh
+    start fix_decryption
+#
