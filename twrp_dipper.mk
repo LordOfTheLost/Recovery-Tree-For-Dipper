@@ -17,21 +17,27 @@
 # 	Please maintain this if you use this script or any part of it
 #
 
+# Release name
 PRODUCT_RELEASE_NAME := dipper
 
-# Inherit from our custom product configuration
-$(call inherit-product, device/$(PRODUCT_RELEASE_NAME)/device.mk)
+# These two paths must be set here
+DEVICE_PATH := device/xiaomi/$(PRODUCT_RELEASE_NAME)
+
+# Inherit from those products
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# Inherit from the sdm845-common device makefile
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
+
+# Inherit from twrp common
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := twrp_dipper
-PRODUCT_DEVICE := dipper
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := MI 8
-PRODUCT_MANUFACTURER := Xiaomi
-
-TARGET_VENDOR_PRODUCT_NAME := dipper
-TARGET_VENDOR_DEVICE_NAME := dipper
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=dipper \
-    BUILD_PRODUCT=dipper \
-    PRODUCT_NAME=dipper
+PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
+PRODUCT_MODEL := Mi 8
