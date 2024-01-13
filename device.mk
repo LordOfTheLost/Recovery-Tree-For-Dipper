@@ -35,10 +35,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0 \
     android.hardware.keymaster@4.0.vendor
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
@@ -72,12 +68,12 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
 
-# # OEM otacert
-# PRODUCT_EXTRA_RECOVERY_KEYS += \
-    # vendor/recovery/security/miui
+# OEM otacert
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    vendor/recovery/security/miui
 
 # keymaster
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.fox.keymaster_version=4
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.fox.keymaster_version=3
 
 # anti-rollback; set build date to Jan 1 2009 00:00:00
 PRODUCT_PROPERTY_OVERRIDES += \
